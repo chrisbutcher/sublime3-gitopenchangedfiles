@@ -25,6 +25,8 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
             return p
 
   def run(self, edit):
+    print('Hello world!')
+
     current_folder = sublime.active_window().folders()[0]
     git_path = self.which('git')
 

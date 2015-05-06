@@ -1,6 +1,9 @@
 # sublime3-gitopenchangedfiles
 A Sublime Text 3 plugin to quickly open files changed in your current branch
 
+# Installation
+TODO
+
 # Default keyboard shortcuts
 ```
 Mac OS X: Command + Shift + O

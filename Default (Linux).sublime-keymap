@@ -1,0 +1,5 @@
+[
+  {
+    "keys": ["control+shift+o"], "command": "git_open_changed_files"
+  }
+]

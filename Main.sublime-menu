@@ -1,0 +1,22 @@
+[
+  {
+    "caption": "Tools",
+    "mnemonic": "t",
+    "id": "tools",
+    "children":
+    [
+      {
+        "caption": "Git - Open files different from master",
+        "mnemonic": "f",
+        "id": "git_open_changed_files",
+        "children":
+        [
+          {
+            "command": "git_open_changed_files",
+            "caption": "Open files different from master"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -8,7 +8,7 @@ A Sublime Text 3 plugin to quickly open files changed in your current branch
 # Installation
 Clone this repo into your Sublime Text 3/Packages folder.
 ```bash
-cd ~/Library/Application Support/Sublime Text 3/Packages/
+cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 git clone git@github.com:chrisbutcher/sublime3-gitopenchangedfiles.git
 ```
 

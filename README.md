@@ -4,8 +4,8 @@ A Sublime Text 3 plugin to quickly open files changed in your current branch
 # Default keyboard shortcuts
 ```
 Mac OS X: Command + Shift + O
-Linux: Control + Shift + O
-Windows: Control + Shift + O
+Linux:    Control + Shift + O
+Windows:  Control + Shift + O
 ```
 
 # License

@@ -32,7 +32,7 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
       self.print_with_error("git not found in PATH")
       return
 
-    pr = subprocess.Popen( git_path + " diff --name-only master" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    pr = subprocess.Popen( git_path + " diff --name-only origin/master" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
     (filenames, error) = pr.communicate()
 
     if error:
@@ -41,7 +41,7 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
     else:
       filenames_split = bytes.decode(filenames).splitlines()
       filename_pattern = re.compile("([^" + self.system_folder_seperator() + "]+$)")
-      sorted_filenames = sorted(filenames_split, key=lambda l: filename_pattern.findall(l))
+      sorted_filenames = sorted(filenames_split, key=lambda fn: filename_pattern.findall(fn))
 
       for file_modified in sorted_filenames:
         filename = current_folder + self.system_folder_seperator() + file_modified

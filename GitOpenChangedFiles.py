@@ -1,5 +1,5 @@
 import sublime, sublime_plugin
-import subprocess, os
+import subprocess, os, re
 
 class GitOpenChangedFiles(sublime_plugin.TextCommand):
   def print_with_status(self, message):
@@ -33,14 +33,20 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
       return
 
     pr = subprocess.Popen( git_path + " diff --name-only master" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
-    (files_modified, error) = pr.communicate()
+    (filenames, error) = pr.communicate()
 
     if error:
       self.print_with_error(error)
       return
     else:
-      files_modified_split = files_modified.splitlines()
-      for file_modified in files_modified_split:
-        sublime.active_window().open_file(current_folder + self.system_folder_seperator() + bytes.decode(file_modified))
+      filenames_split = bytes.decode(filenames).splitlines()
+      filename_pattern = re.compile("([^" + self.system_folder_seperator() + "]+$)")
+      sorted_filenames = sorted(filenames_split, key=lambda l: filename_pattern.findall(l))
+
+      for file_modified in sorted_filenames:
+        filename = current_folder + self.system_folder_seperator() + file_modified
+        if os.path.isfile(filename):
+          sublime.active_window().open_file(filename)
+
       self.print_with_status("Git: Opened files modified in branch")
 

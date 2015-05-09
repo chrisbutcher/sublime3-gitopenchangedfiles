@@ -6,6 +6,10 @@ A Sublime Text 3 plugin to quickly open files changed in your current branch
 (GIF recorded with [LICEcap](http://www.cockos.com/licecap/))
 
 # Installation
+### Using [Sublime Text Package Control](https://packagecontrol.io/packages/GitOpenChangedFiles)
+Search for *GitOpenChangedFiles* and install.
+
+### Manually:
 Clone this repo into your Sublime Text 3/Packages folder.
 ```bash
 cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/

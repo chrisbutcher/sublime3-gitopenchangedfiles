@@ -33,7 +33,7 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
       self.print_with_error("git not found in PATH")
       return
 
-    pr = subprocess.Popen( git_path + " diff --name-only origin/master" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    pr = subprocess.Popen( git_path + " diff --name-only $(git symbolic-ref HEAD 2>/dev/null)" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
     (filenames, error) = pr.communicate()
 
     if error:

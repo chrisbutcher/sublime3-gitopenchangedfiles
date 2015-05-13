@@ -1,6 +1,10 @@
 import sublime, sublime_plugin
 import subprocess, os, re
 
+def load_settings():
+  global settings
+  settings = sublime.load_settings('GitOpenChangedFiles.sublime-settings')
+
 class GitOpenChangedFiles(sublime_plugin.TextCommand):
   def print_with_status(self, message):
     sublime.status_message(message)
@@ -33,6 +37,8 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
       self.print_with_error("git not found in PATH")
       return
 
+    compare_branch_to = settings.get('compare_branch_to', 'origin/master')
+
     pr = subprocess.Popen( git_path + " diff --name-only origin/master" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
     (filenames, error) = pr.communicate()
 
@@ -50,4 +56,6 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
           sublime.active_window().open_file(filename)
 
       self.print_with_status("Git: Opened files modified in branch")
+
+load_settings()
 

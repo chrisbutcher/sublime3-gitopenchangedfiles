@@ -18,5 +18,86 @@
         ]
       }
     ]
+  },
+  {
+      "caption": "Preferences",
+      "mnemonic": "n",
+      "id": "preferences",
+      "children":
+      [
+          {
+              "caption": "Package Settings",
+              "mnemonic": "P",
+              "id": "package-settings",
+              "children":
+              [
+                  {
+                      "caption": "GitOpenChangedFiles",
+                      "children":
+                      [
+                          {
+                              "command": "open_file",
+                              "args": {"file": "${packages}/GitOpenChangedFiles/GitOpenChangedFiles.sublime-settings"},
+                              "caption": "Settings – Default"
+                          },
+                          {
+                              "command": "open_file",
+                              "args": {"file": "${packages}/User/GitOpenChangedFiles.sublime-settings"},
+                              "caption": "Settings – User"
+                          },
+                          { "caption": "-" },
+                          {
+                              "command": "open_file",
+                              "args": {
+                                  "file": "${packages}/GitOpenChangedFiles/Default (OSX).sublime-keymap",
+                                  "platform": "OSX"
+                              },
+                              "caption": "Key Bindings – Default"
+                          },
+                          {
+                              "command": "open_file",
+                              "args": {
+                                  "file": "${packages}/GitOpenChangedFiles/Default (Linux).sublime-keymap",
+                                  "platform": "Linux"
+                              },
+                              "caption": "Key Bindings – Default"
+                          },
+                          {
+                              "command": "open_file",
+                              "args": {
+                                  "file": "${packages}/GitOpenChangedFiles/Default (Windows).sublime-keymap",
+                                  "platform": "Windows"
+                              },
+                              "caption": "Key Bindings – Default"
+                          },
+                          {
+                              "command": "open_file",
+                              "args": {
+                                  "file": "${packages}/User/Default (OSX).sublime-keymap",
+                                  "platform": "OSX"
+                              },
+                              "caption": "Key Bindings – User"
+                          },
+                          {
+                              "command": "open_file",
+                              "args": {
+                                  "file": "${packages}/User/Default (Linux).sublime-keymap",
+                                  "platform": "Linux"
+                              },
+                              "caption": "Key Bindings – User"
+                          },
+                          {
+                              "command": "open_file",
+                              "args": {
+                                  "file": "${packages}/User/Default (Windows).sublime-keymap",
+                                  "platform": "Windows"
+                              },
+                              "caption": "Key Bindings – User"
+                          }
+                      ]
+                  }
+              ]
+          }
+      ]
   }
 ]

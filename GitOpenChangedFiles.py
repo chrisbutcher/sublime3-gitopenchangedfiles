@@ -31,7 +31,13 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
   def run(self, edit):
     sublime.run_command('refresh_folder_list')
     current_folder = sublime.active_window().folders()[0]
-    git_path = self.which('git')
+
+    if sublime.platform() == "windows":
+      git_name = 'git.exe'
+    else:
+      git_name = 'git'
+
+    git_path = self.which(git_name)
 
     if not git_path:
       self.print_with_error("git not found in PATH")
@@ -39,11 +45,11 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
 
     compare_branch_to = settings.get('compare_branch_to', 'origin/master')
 
-    pr = subprocess.Popen( git_path + " diff --name-only origin/master" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    pr = subprocess.Popen("git diff --name-only origin/master" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
     (filenames, error) = pr.communicate()
 
     if error:
-      self.print_with_error(error)
+      self.print_with_error('Could not run git command. Ensure you have git properly installed: ' + str(error))
       return
     else:
       filenames_split = bytes.decode(filenames).splitlines()
@@ -58,4 +64,3 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
       self.print_with_status("Git: Opened files modified in branch")
 
 load_settings()
-

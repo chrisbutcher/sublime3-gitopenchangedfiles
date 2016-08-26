@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Git: Open files different from master",
+        "command": "git_open_changed_files"
+    }
+]

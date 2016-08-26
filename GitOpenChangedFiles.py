@@ -43,9 +43,9 @@ class GitOpenChangedFiles(sublime_plugin.TextCommand):
       self.print_with_error("git not found in PATH")
       return
 
-    compare_branch_to = settings.get('compare_branch_to', 'origin/master')
+    compare_branch_to = settings.get('compare_branch_to', 'master...')
 
-    pr = subprocess.Popen("git diff --name-only origin/master" , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
+    pr = subprocess.Popen("git diff --name-only "+compare_branch_to , cwd = current_folder, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE )
     (filenames, error) = pr.communicate()
 
     if error:
